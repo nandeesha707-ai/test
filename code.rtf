@@ -1,0 +1,58 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2870
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 import os\
+import stripe\
+\
+# DLP TRIGGER: This contains an active-formatted fake Stripe Live API Key\
+# Most DLPs will flag the "sk_live_" prefix followed by high-entropy text.\
+STRIPE_API_KEY = "sk_live_4eC39HqLyjWDarjtT1zdp7dcTYooMQauvdEDq54NiTphI7jx"\
+\
+def initialize_payment():\
+    print("Connecting to payment gateway...")\
+    stripe.api_key = STRIPE_API_KEY\
+    \
+    # Generic operational code\
+    charge = stripe.Charge.create(\
+        amount=2500,\
+        currency="usd",\
+        source="tok_visa",\
+        description="DLP Test Transaction"\
+    )\
+    return charge\
+\
+\
+\
+\
+\
+package com.company.internal.core;\
+\
+import java.sql.Connection;\
+import java.sql.DriverManager;\
+import java.sql.SQLException;\
+\
+/**\
+ * INTERNAL USE ONLY - PROPRIETARY SOURCE CODE\
+ * PROPERTY OF ACME CORP. DO NOT DISTRIBUTE OUTSIDE THE NETWORK.\
+ */\
+public class DatabaseManager \{\
+    private static final String DB_URL = "jdbc:mysql://internal-prod-db.local:3306/users";\
+    private static final String DB_USER = "admin_root";\
+    \
+    // DLP TRIGGER: Hardcoded password placeholder and sensitive SQL queries\
+    private static final String DB_PASS = "P@ssword12345!_secure_string";\
+\
+    public Connection connectToDatabase() throws SQLException \{\
+        try \{\
+            Class.forName("com.mysql.cj.jdbc.Driver");\
+            return DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);\
+        \} catch (ClassNotFoundException e) \{\
+            throw new SQLException("Database driver not found", e);\
+        \}\
+    \}\
+\}\
+}
